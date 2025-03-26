@@ -116,7 +116,7 @@ class AssetManager {
     // Phương thức tải tất cả tài nguyên cần thiết
     loadAllAssets() {
 		 // Thêm nhạc nền
-		this.loadSound('bgMusic', 'assets/sounds/background-music.mp3');
+	this.loadSound('bgMusic', 'data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0...');
         // Tạo hình ảnh khủng long
         this.createCanvasImage('dino', (ctx) => {
             // Vẽ thân khủng long
