@@ -39,8 +39,61 @@ class Game {
         
         // Khởi tạo hàm xử lý trong UI
         this.initUIHandlers();
+		    // Thêm thuộc tính để theo dõi nhạc nền
+    this.backgroundMusic = null;
+    this.isMusicPlaying = false;
+    
+    // Thêm nút bật/tắt nhạc
+    this.setupMusicControl();
     }
     
+	  // Thêm phương thức mới setupMusicControl
+    setupMusicControl() {
+        const musicBtn = document.createElement('button');
+        musicBtn.innerHTML = '🔊';
+        musicBtn.className = 'btn music-btn';
+        musicBtn.title = 'Bật/Tắt nhạc';
+        
+        // Thêm vào giao diện
+        const container = document.querySelector('.ui-container');
+        container.appendChild(musicBtn);
+        
+        // Xử lý sự kiện click
+        musicBtn.addEventListener('click', () => {
+            if (this.isMusicPlaying) {
+                this.stopMusic();
+                musicBtn.innerHTML = '🔇';
+            } else {
+                this.playMusic();
+                musicBtn.innerHTML = '🔊';
+            }
+        });
+    }
+    
+    // Thêm phương thức phát nhạc
+    playMusic() {
+        if (assetManager.sounds['bgMusic']) {
+            if (!this.backgroundMusic) {
+                this.backgroundMusic = assetManager.sounds['bgMusic'];
+                this.backgroundMusic.loop = true;
+                this.backgroundMusic.volume = 0.3;
+            }
+            this.backgroundMusic.play().catch(error => {
+                console.log("Không thể phát nhạc: ", error);
+            });
+            this.isMusicPlaying = true;
+        }
+    }
+    
+    // Thêm phương thức dừng nhạc
+    stopMusic() {
+        if (this.backgroundMusic) {
+            this.backgroundMusic.pause();
+            this.backgroundMusic.currentTime = 0;
+            this.isMusicPlaying = false;
+        }
+    }
+	
     // Thiết lập các event listener
     setupEventListeners() {
         // Sự kiện bàn phím
@@ -316,4 +369,6 @@ class Game {
         // Hiển thị màn hình kết thúc
         this.ui.showGameOver(this.score);
     }
+	
+	
 }
