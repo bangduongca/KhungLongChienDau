@@ -135,34 +135,46 @@ class Game {
     const rightBtn = document.getElementById('rightBtn');
     const shootBtn = document.getElementById('shootBtn');
     
-		if (leftBtn) {
-			leftBtn.addEventListener('touchstart', (e) => {
-				e.preventDefault(); // Ngăn hành vi mặc định
-				this.player.moveLeft = true;
-			});
-			
-			leftBtn.addEventListener('touchend', (e) => {
-				e.preventDefault();
-				this.player.moveLeft = false;
-			});
-		}
+					if (leftBtn) {
+				['touchstart', 'mousedown'].forEach(eventType => {
+					leftBtn.addEventListener(eventType, (e) => {
+						e.preventDefault();
+						this.player.moveLeft = true;
+					});
+				});
+				
+				['touchend', 'touchcancel', 'mouseup', 'mouseleave'].forEach(eventType => {
+					leftBtn.addEventListener(eventType, (e) => {
+						e.preventDefault();
+						this.player.moveLeft = false;
+					});
+				});
+			}
+
 			if (rightBtn) {
-			rightBtn.addEventListener('touchstart', (e) => {
-				e.preventDefault();
-				this.player.moveRight = true;
-			});
-			
-			rightBtn.addEventListener('touchend', (e) => {
-				e.preventDefault();
-				this.player.moveRight = false;
-			});
-		}
-			 if (shootBtn) {
-			shootBtn.addEventListener('touchstart', (e) => {
-				e.preventDefault();
-				this.shootEgg();
-			});
-		}
+				['touchstart', 'mousedown'].forEach(eventType => {
+					rightBtn.addEventListener(eventType, (e) => {
+						e.preventDefault();
+						this.player.moveRight = true;
+					});
+				});
+				
+				['touchend', 'touchcancel', 'mouseup', 'mouseleave'].forEach(eventType => {
+					rightBtn.addEventListener(eventType, (e) => {
+						e.preventDefault();
+						this.player.moveRight = false;
+					});
+				});
+			}
+
+			if (shootBtn) {
+				['touchstart', 'mousedown'].forEach(eventType => {
+					shootBtn.addEventListener(eventType, (e) => {
+						e.preventDefault();
+						this.shootEgg();
+					});
+				});
+			}
     }
     
     // Khởi tạo các hàm xử lý trong UI

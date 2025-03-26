@@ -287,3 +287,57 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+.mobile-btn {
+    width: 80px; /* Lớn hơn */
+    height: 80px; /* Lớn hơn */
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 3px solid #333; /* Thêm viền để dễ thấy */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem; /* Lớn hơn */
+    font-weight: bold;
+    pointer-events: auto;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    z-index: 9999; /* Đảm bảo nút luôn ở trên cùng */
+}
+
+.mobile-btn:active {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: scale(0.9);
+}
+
+/* Hiển thị nút điều khiển di động trên mọi thiết bị */
+.mobile-controls {
+    display: flex !important; /* Đảm bảo luôn hiển thị */
+    bottom: 30px;
+    z-index: 9999;
+}
+
+@media (max-width: 768px) {
+    .mobile-controls {
+        bottom: 50px; /* Đặt xa hơn từ cạnh dưới */
+    }
+    
+    .mobile-btn {
+        width: 70px; /* Điều chỉnh kích thước phù hợp với màn hình */
+        height: 70px;
+        opacity: 0.9; /* Làm mờ nhẹ để không che quá nhiều */
+    }
+    
+    .mobile-control-group {
+        gap: 15px; /* Không để các nút quá gần nhau */
+    }
+    
+    /* Đảm bảo nút bắn lớn và nổi bật */
+    #shootBtn {
+        width: 80px;
+        height: 80px;
+        background-color: rgba(255, 220, 100, 0.8);
+        border: 4px solid #ff9900;
+    }
+}

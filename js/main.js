@@ -398,3 +398,19 @@ function createPlaceholderSounds() {
     }
 }
 
+// Thêm vào main.js
+function resizeCanvas() {
+    const canvas = document.getElementById('gameCanvas');
+    const container = document.getElementById('gameContainer');
+    
+    const aspectRatio = 800 / 600;
+    
+    // Đảm bảo canvas luôn có tỷ lệ đúng
+    const containerWidth = container.clientWidth;
+    canvas.style.width = containerWidth + 'px';
+    canvas.style.height = (containerWidth / aspectRatio) + 'px';
+}
+
+// Gọi khi trang tải và khi thay đổi kích thước màn hình
+window.addEventListener('load', resizeCanvas);
+window.addEventListener('resize', resizeCanvas);
