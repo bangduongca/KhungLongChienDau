@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khủng Long Bắn Trứng</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas"></canvas>
+        
+        <div class="ui-container">
+            <div class="game-stats">
+                <div class="stat" id="scoreDisplay">Điểm: 0</div>
+                <div class="stat" id="eggDisplay">Trứng: 10</div>
+            </div>
+            
+            <div id="levelIndicator">Cấp 1</div>
+            
+            <button id="pauseBtn" class="btn">Tạm dừng</button>
+            
+            <div class="health-bar">
+                <div class="health-fill"></div>
+            </div>
+            
+            <div class="level-transition" id="levelTransition">Cấp 1</div>
+            
+            <div class="mobile-controls">
+                <div class="mobile-control-group">
+                    <div class="mobile-btn" id="leftBtn">←</div>
+                    <div class="mobile-btn" id="rightBtn">→</div>
+                </div>
+                <div class="mobile-btn" id="shootBtn">🥚</div>
+            </div>
+            
+            <div id="startScreen" class="screen active">
+                <h1>Khủng Long Bắn Trứng</h1>
+                <button id="tutorialBtn" class="btn">Bắt đầu chơi</button>
+                <button id="startBtn" class="btn">Hướng Dẫn</button>
+            </div>
+            
+            <div id="tutorialScreen" class="screen">
+                <h2>Hướng dẫn</h2>
+                <ul>
+                    <li>Sử dụng phím mũi tên trái/phải để di chuyển khủng long</li>
+                    <li>Nhấn phím mũi tên lên hoặc Space để bắn trứng</li>
+                    <li>Trên điện thoại, sử dụng các nút điều khiển ở dưới màn hình</li>
+                    <li>Tiêu diệt kẻ địch để ghi điểm</li>
+                    <li>Thu thập trứng để bổ sung đạn</li>
+                    <li>Hãy chú ý đến thanh sức khỏe của bạn!</li>
+                </ul>
+                <button id="backBtn" class="btn">Quay lại</button>
+            </div>
+            
+            <div id="pauseScreen" class="screen">
+                <h2>Tạm dừng</h2>
+                <button id="resumeBtn" class="btn">Tiếp tục</button>
+                <button id="quitBtn" class="btn">Thoát</button>
+            </div>
+            
+            <div id="gameOverScreen" class="screen">
+                <h2>Trò chơi kết thúc</h2>
+                <div id="finalScore">Điểm số: 0</div>
+                <div id="highScore">Điểm cao nhất: 0</div>
+                <button id="restartBtn" class="btn">Chơi lại</button>
+                <button id="homeBtn" class="btn">Trang chủ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tải assets -->
+    <script src="js/assets.js"></script>
+    
+    <!-- Tải các module game -->
+    <script src="js/collision.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/projectile.js"></script>
+    <script src="js/enemy.js"></script>
+    <script src="js/powerup.js"></script>
+    <script src="js/level.js"></script>
+    <script src="js/ui.js"></script>
+    
+    <!-- Tải module chính của game -->
+    <script src="js/game.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
