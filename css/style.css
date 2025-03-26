@@ -2,11 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: #8ecde6;
+    background: linear-gradient(to bottom, #87CEEB, #1E90FF);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,6 +14,7 @@ body {
     min-height: 100vh;
     overflow: hidden;
     touch-action: none;
+    padding: 20px;
 }
 
 #gameContainer {
@@ -21,9 +22,11 @@ body {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
     overflow: hidden;
+    background-color: #2E8B57;
+    transition: all 0.3s ease;
 }
 
 #gameCanvas {
@@ -68,66 +71,93 @@ body {
 }
 
 #startScreen h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    color: #FFD700;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+}
+
+#tutorialScreen h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #ffcc00;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    color: #FFD700;
 }
 
 #tutorialScreen ul {
     text-align: left;
     margin: 20px auto;
-    max-width: 400px;
+    max-width: 500px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px 30px;
+    border-radius: 10px;
+    list-style-type: none;
 }
 
 #tutorialScreen li {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    padding-left: 30px;
+    position: relative;
+}
+
+#tutorialScreen li:before {
+    content: "•";
+    position: absolute;
+    left: 10px;
+    color: #FFD700;
+    font-size: 1.5rem;
 }
 
 #gameOverScreen h2 {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     color: #ff6b6b;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .btn {
-    background-color: #4caf50;
+    background: linear-gradient(to bottom, #4CAF50, #2E8B57);
     color: white;
     border: none;
-    padding: 12px 25px;
-    margin: 10px;
+    padding: 15px 30px;
+    margin: 15px;
     font-size: 1.2rem;
     border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: all 0.2s;
     pointer-events: auto;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    outline: none;
 }
 
 .btn:hover {
-    background-color: #45a049;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(to bottom, #45a049, #257045);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .btn:active {
     transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 #pauseBtn {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #ffa500;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(to bottom, #FFA500, #FF8C00);
     font-size: 1rem;
-    padding: 8px 15px;
+    padding: 10px 20px;
 }
 
 .game-stats {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 15px;
+    left: 15px;
     display: flex;
     gap: 20px;
 }
@@ -135,27 +165,31 @@ body {
 .stat {
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
-    padding: 5px 10px;
+    padding: 8px 15px;
     border-radius: 20px;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .health-bar {
     position: absolute;
-    bottom: 10px;
-    left: 10px;
-    height: 20px;
-    width: 200px;
+    bottom: 15px;
+    left: 15px;
+    height: 25px;
+    width: 250px;
     background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
+    border-radius: 15px;
     overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .health-fill {
     height: 100%;
-    background-color: #4caf50;
+    background: linear-gradient(to right, #4caf50, #8bc34a);
     width: 100%;
     transition: width 0.3s;
+    border-radius: 15px;
 }
 
 .mobile-controls {
@@ -169,24 +203,26 @@ body {
 
 .mobile-control-group {
     display: flex;
-    gap: 10px;
+    gap: 15px;
 }
 
 .mobile-btn {
-    width: 60px;
-    height: 60px;
-    background-color: rgba(255, 255, 255, 0.6);
+    width: 70px;
+    height: 70px;
+    background-color: rgba(255, 255, 255, 0.7);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     pointer-events: auto;
     user-select: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .mobile-btn:active {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: scale(0.95);
 }
 
 @media (min-width: 768px) {
@@ -197,15 +233,16 @@ body {
 
 #levelIndicator {
     position: absolute;
-    top: 10px;
+    top: 15px;
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
-    padding: 5px 15px;
+    padding: 8px 20px;
     border-radius: 20px;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .level-transition {
@@ -215,22 +252,31 @@ body {
     transform: translate(-50%, -50%);
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
-    padding: 20px 40px;
-    border-radius: 10px;
-    font-size: 1.5rem;
+    padding: 25px 50px;
+    border-radius: 15px;
+    font-size: 2rem;
+    font-weight: bold;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s;
+    transition: opacity 0.5s;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .level-transition.show {
     opacity: 1;
 }
 
+#finalScore, #highScore {
+    font-size: 1.3rem;
+    margin: 10px 0;
+    color: #FFD700;
+}
+
 .music-btn {
     position: absolute;
-    top: 15px;
-    right: 80px; /* Đặt bên phải nút tạm dừng */
+    top: 70px;
+    right: 20px; /* Đặt bên phải nút tạm dừng */
     background: linear-gradient(to bottom, #8e44ad, #9b59b6);
     width: 40px;
     height: 40px;

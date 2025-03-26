@@ -37,6 +37,7 @@ class UI {
     init(onStart, onPause, onResume, onRestart, onHome, onLeftDown, onLeftUp, onRightDown, onRightUp, onShoot) {
         // Nút bắt đầu
         this.startBtn.addEventListener('click', () => {
+			
             this.hideAllScreens();
             onStart();
 			

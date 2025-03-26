@@ -40,11 +40,12 @@ class Game {
         // Khởi tạo hàm xử lý trong UI
         this.initUIHandlers();
 		    // Thêm thuộc tính để theo dõi nhạc nền
-    this.backgroundMusic = null;
-    this.isMusicPlaying = false;
-    
-    // Thêm nút bật/tắt nhạc
-    this.setupMusicControl();
+		this.backgroundMusic = null;
+		this.isMusicPlaying = false;
+		
+		// Thêm nút bật/tắt nhạc
+		this.setupMusicControl();
+		
     }
     
 	  // Thêm phương thức mới setupMusicControl
@@ -129,6 +130,39 @@ class Game {
                     break;
             }
         });
+		    // Thêm xử lý cho touch events
+    const leftBtn = document.getElementById('leftBtn');
+    const rightBtn = document.getElementById('rightBtn');
+    const shootBtn = document.getElementById('shootBtn');
+    
+		if (leftBtn) {
+			leftBtn.addEventListener('touchstart', (e) => {
+				e.preventDefault(); // Ngăn hành vi mặc định
+				this.player.moveLeft = true;
+			});
+			
+			leftBtn.addEventListener('touchend', (e) => {
+				e.preventDefault();
+				this.player.moveLeft = false;
+			});
+		}
+			if (rightBtn) {
+			rightBtn.addEventListener('touchstart', (e) => {
+				e.preventDefault();
+				this.player.moveRight = true;
+			});
+			
+			rightBtn.addEventListener('touchend', (e) => {
+				e.preventDefault();
+				this.player.moveRight = false;
+			});
+		}
+			 if (shootBtn) {
+			shootBtn.addEventListener('touchstart', (e) => {
+				e.preventDefault();
+				this.shootEgg();
+			});
+		}
     }
     
     // Khởi tạo các hàm xử lý trong UI
@@ -175,6 +209,8 @@ class Game {
         // Bắt đầu game loop
         this.isRunning = true;
         this.gameLoop();
+		// Hiển thị gợi ý nhấn nút âm thanh
+		this.showAudioHint();
     }
     
     // Tạm dừng game
