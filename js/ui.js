@@ -39,6 +39,12 @@ class UI {
         this.startBtn.addEventListener('click', () => {
             this.hideAllScreens();
             onStart();
+			
+			  // Cho phép phát nhạc sau khi người dùng tương tác
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioContext.state === 'suspended') {
+            audioContext.resume();
+        }
         });
         
         // Nút hướng dẫn
