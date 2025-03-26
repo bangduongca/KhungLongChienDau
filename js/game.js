@@ -45,6 +45,8 @@ class Game {
 		
 		// Thêm nút bật/tắt nhạc
 		this.setupMusicControl();
+		    // Thêm vào đây
+		window.gameInstance = this;
 		
     }
     

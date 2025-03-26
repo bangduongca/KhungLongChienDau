@@ -341,3 +341,42 @@ body {
         border: 4px solid #ff9900;
     }
 }
+
+/* Đảm bảo các nút có thể nhấn được */
+.btn, button, .mobile-btn {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 9999 !important;
+}
+
+.screen.active {
+    pointer-events: auto !important;
+    z-index: 9000 !important;
+}
+
+.ui-container {
+    pointer-events: auto !important;
+}
+
+/* Làm nút to hơn trên mobile */
+@media (max-width: 768px) {
+    #startBtn, #tutorialBtn, .btn {
+        padding: 20px 30px !important;
+        font-size: 1.3rem !important;
+        margin: 15px !important;
+    }
+    
+    .mobile-btn {
+        width: 80px !important;
+        height: 80px !important;
+        background-color: rgba(255, 255, 255, 0.8) !important;
+        border: 3px solid #333 !important;
+    }
+    
+    #shootBtn {
+        width: 90px !important;
+        height: 90px !important;
+        background-color: rgba(255, 220, 100, 0.9) !important;
+        border: 4px solid #ff9900 !important;
+    }
+}
